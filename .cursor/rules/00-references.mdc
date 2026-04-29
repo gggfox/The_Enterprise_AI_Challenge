@@ -1,0 +1,47 @@
+---
+description: Reference projects available as read-only inspiration
+alwaysApply: true
+---
+
+# Reference projects
+
+Two reference projects live under the top-level `references/` folder at the
+repo root (each is its own independent git clone, not tracked by this repo):
+
+- `references/logisticsPractice` — pnpm + Turborepo monorepo, Fastify Bridge
+  API, Convex (as a workspace package), Biome / jscpd / knip quality gates,
+  Dokploy + Docker Compose deploy, OTLP wide-event observability via SigNoz.
+- `references/Tavli` — TanStack Router (file-based routes), TanStack Query +
+  Store, Convex with `CONVEX_ENV` gating, Stripe + Stripe Connect dual-webhook
+  split, Vitest + Playwright testing.
+
+When opened via `enterprise-ai.code-workspace`, they appear as the
+`ref: logisticsPractice` and `ref: Tavli` workspace roots.
+
+## Rules of engagement
+
+1. **Read-only.** Never modify, commit to, or run installers/builds inside
+   `../references/**`. Treat them as you would a vendored library: look,
+   don't touch.
+2. **Adapt, don't clone.** When pulling a pattern, re-implement it to match
+   this project's stack and naming. Do not paste files verbatim, do not
+   copy license headers or `package.json` author fields, and do not import
+   names like `logisticsPractice` or `Tavli` into this project's code or
+   docs.
+3. **Record lineage.** Every adopted pattern must get a one-line entry in
+   [docs/inspiration.md](mdc:docs/inspiration.md) noting which reference
+   and (when useful) which path it came from. The pinned SHAs at the top
+   of that file are the canonical "as-of" anchors.
+4. **Latest is opt-in.** References are refreshed by running
+   `./update-refs.sh` from the repo root. Do not auto-pull during normal
+   task work — fresh upstream commits are pulled deliberately, not
+   silently.
+5. **Search scope.** When grepping or browsing for prior art across all
+   three roots, prefer searches scoped to a single reference at a time so
+   answers cite a clear source.
+
+## When in doubt
+
+If a pattern from a reference conflicts with an established convention in
+this project, the project wins. The references encode *one* good way to
+solve a problem; this project encodes *our* way.

@@ -1,0 +1,27 @@
+{
+  "folders": [
+    { "name": "enterprise-ai", "path": "." },
+    { "name": "ref: logisticsPractice", "path": "references/logisticsPractice" },
+    { "name": "ref: Tavli", "path": "references/Tavli" }
+  ],
+  "settings": {
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/.turbo": true,
+      "**/coverage": true,
+      "**/.pnpm-store": true
+    },
+    "files.exclude": {
+      "**/.DS_Store": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.next/**": true,
+      "**/dist/**": true,
+      "**/.turbo/**": true
+    }
+  }
+}

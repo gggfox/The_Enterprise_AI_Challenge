@@ -1,0 +1,37 @@
+# Defensive: references live as siblings of this repo, never inside it.
+# This entry only matters if a reference clone is ever accidentally placed here.
+/references
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.turbo/
+.vite/
+coverage/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
