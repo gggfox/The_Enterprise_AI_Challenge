@@ -1,0 +1,40 @@
+{
+  "name": "@enterprise-ai/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "start": "node .output/server/index.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src/",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.132.0",
+    "@tanstack/react-router-devtools": "^1.132.0",
+    "@tanstack/react-start": "^1.132.0",
+    "@tanstack/router-plugin": "^1.132.0",
+    "nitro": "3.0.1-alpha.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "jsdom": "^27.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^7.1.7",
+    "vitest": "^3.0.5"
+  }
+}

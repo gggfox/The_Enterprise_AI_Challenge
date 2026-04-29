@@ -17,7 +17,12 @@ out/
 .next/
 .turbo/
 .vite/
+.output/
+.nitro/
 coverage/
+
+# TanStack Router generated route tree
+**/routeTree.gen.ts
 
 # Env
 .env
