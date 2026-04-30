@@ -9,6 +9,7 @@
  */
 
 import type * as _shared_identity from "../_shared/identity.js";
+import type * as analytics from "../analytics.js";
 import type * as http from "../http.js";
 import type * as prompts from "../prompts.js";
 import type * as seed from "../seed.js";
@@ -23,6 +24,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   "_shared/identity": typeof _shared_identity;
+  analytics: typeof analytics;
   http: typeof http;
   prompts: typeof prompts;
   seed: typeof seed;

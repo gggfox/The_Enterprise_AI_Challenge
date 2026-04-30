@@ -1,114 +1,132 @@
 import { AppShell } from '@/components/AppShell/AppShell'
 import { Button } from '@/components/Button/Button'
+import { convex } from '@/lib/convex'
 import {
   type AgentState,
   type ConvTurn,
   type DeepgramFunctionSchema,
   useDeepgramAgent,
 } from '@/lib/deepgram/useDeepgramAgent'
+import { api } from '@enterprise-ai/convex/convex/_generated/api'
 import { createFileRoute } from '@tanstack/react-router'
+import { useQuery as useConvexQuery } from 'convex/react'
+import { useMemo } from 'react'
 
 export const Route = createFileRoute('/ask')({ component: AskPage })
 
-const SYSTEM_PROMPT = `You are an analytics assistant for the regional manager of a chain of convenience stores (think OXXO / 7-Eleven) in Mexico.
-The user will ask questions about store performance: sales, traffic, average ticket, shrinkage, headcount, inventory, and similar metrics, scoped to a specific store, region, or the whole chain.
+type Store = {
+  code: string
+  name: string
+  city: string
+  region: string
+}
 
-Rules:
-- Whenever the user asks for a number, trend, or comparison, you MUST call the get_store_metric function. Never make numbers up.
-- After the function returns, give a one-sentence insight in plain language and state the headline number. Keep spoken responses under 25 words.
-- If the user's request is ambiguous (no scope or no period), pick a reasonable default and mention it briefly.
-- Speak in English. Spanish support will be added later.`
+type SalesSeriesRow = {
+  date: string
+  revenue: number
+  transactions: number
+  units: number
+}
+
+type SalesResultOk = {
+  ok: true
+  scope_label: string
+  date_range: string
+  total_revenue_mxn: number
+  total_transactions: number
+  total_units: number
+  series: SalesSeriesRow[]
+}
+type SalesResultErr = { ok: false; error: string; scope_label: string }
+type SalesResult = SalesResultOk | SalesResultErr
 
 const FUNCTIONS: readonly DeepgramFunctionSchema[] = [
   {
-    name: 'get_store_metric',
+    name: 'query_sales',
     description:
-      'Look up a metric (sales, ticket_avg, shrinkage, headcount, traffic, inventory_turns) for a store, region, or the whole chain over a period. Returns a headline value plus a daily series and a one-line insight.',
+      'Get daily revenue, transactions, and units sold for a store, region, or the whole chain over the last N days. Anchored to the most recent date in the data.',
     parameters: {
       type: 'object',
       properties: {
-        metric: {
-          type: 'string',
-          description:
-            'Which metric to retrieve. One of: sales, ticket_avg, shrinkage, headcount, traffic, inventory_turns.',
-        },
         scope: {
           type: 'string',
           description:
-            'Store id (e.g. "store:MTY-014"), region (e.g. "region:north"), or "all" for chain-wide.',
+            'Use "all" for chain-wide, "region:<NAME>" for a region (e.g. "region:CDMX"), or "store:<CODE>" for one store (e.g. "store:CDMX-POL"). Bare codes/region names are also accepted.',
         },
-        period: {
-          type: 'string',
+        days: {
+          type: 'integer',
           description:
-            'Time window: "today", "this_week", "last_week", "this_month", "last_month".',
+            'Window length in days, anchored to the latest date in the data. Defaults to 7. Use 7 for a week, 30 for a month, etc.',
         },
       },
-      required: ['metric'],
+      required: ['scope'],
     },
   },
 ]
 
+function buildSystemPrompt(
+  stores: readonly Store[],
+  regions: readonly string[],
+) {
+  const storeLines = stores
+    .map((s) => `- ${s.code} - ${s.name} (${s.city}, ${s.region})`)
+    .join('\n')
+  return `You are an analytics assistant for the regional manager of "Tiendita", a fictional Mexican convenience-store chain.
+
+Available stores (use the code in the scope arg):
+${storeLines || '- (still loading store list)'}
+
+Regions: ${regions.join(', ') || '(loading)'}
+
+When the user asks about sales, revenue, traffic, transactions, units, or trends, ALWAYS call the query_sales function. Never invent numbers.
+- scope: "all", "region:<NAME>" (e.g. "region:CDMX"), or "store:<CODE>" (e.g. "store:CDMX-POL").
+- days: integer window. "this week" or "the past week" -> 7, "two weeks" -> 14, "this month" -> 30, "last quarter" -> 90.
+
+After the function returns, give a one-sentence insight in plain language and state the headline revenue figure in pesos (MXN). Keep spoken responses under 25 words.
+If the result has ok=false, briefly tell the user the scope wasn't recognized and suggest a known store or region.
+
+Speak in English. Spanish support is coming next.`
+}
+
 const GREETING =
-  "Hi, I'm your store data assistant. Ask me about sales, traffic, or any metric and I'll pull the numbers."
-
-type StoreMetricResult = {
-  metric: string
-  scope: string
-  period: string
-  value: number
-  unit: string
-  series: { label: string; value: number }[]
-  insight: string
-}
-
-// Stub backend. Swap to a Bridge call (POST /api/v1/ask) once the
-// real analytics endpoint exists.
-function mockGetStoreMetric(args: Record<string, unknown>): StoreMetricResult {
-  const metric = String(args.metric ?? 'sales')
-  const scope = String(args.scope ?? 'region:north')
-  const period = String(args.period ?? 'this_week')
-  const series = [
-    { label: 'Mon', value: 12_400 },
-    { label: 'Tue', value: 13_900 },
-    { label: 'Wed', value: 15_200 },
-    { label: 'Thu', value: 14_100 },
-    { label: 'Fri', value: 18_700 },
-    { label: 'Sat', value: 21_300 },
-    { label: 'Sun', value: 19_800 },
-  ]
-  const total = series.reduce((a, b) => a + b.value, 0)
-  const unit =
-    metric === 'sales' || metric === 'ticket_avg'
-      ? 'MXN'
-      : metric === 'shrinkage'
-        ? 'percent'
-        : metric === 'headcount' || metric === 'traffic'
-          ? 'count'
-          : 'turns'
-  return {
-    metric,
-    scope,
-    period,
-    value: total,
-    unit,
-    series,
-    insight: `${metric} in ${scope} is up ~14% week-over-week, mostly driven by the weekend.`,
-  }
-}
+  "Hi, I'm your store data assistant. Ask me about sales, transactions, or units across any store or region."
 
 function AskPage() {
+  const stores = useConvexQuery(api.analytics.listStores) as
+    | readonly Store[]
+    | undefined
+  const regions = useConvexQuery(api.analytics.listRegions) as
+    | readonly string[]
+    | undefined
+
+  const ready = stores !== undefined && regions !== undefined
+  const systemPrompt = useMemo(
+    () => buildSystemPrompt(stores ?? [], regions ?? []),
+    [stores, regions],
+  )
+
   const agent = useDeepgramAgent({
     language: 'en',
-    systemPrompt: SYSTEM_PROMPT,
+    systemPrompt,
     greeting: GREETING,
     functions: FUNCTIONS,
-    onToolCall: (name, args) => {
-      if (name === 'get_store_metric') return mockGetStoreMetric(args)
-      return { error: `unknown_tool:${name}` }
+    onToolCall: async (name, args) => {
+      if (name !== 'query_sales') return { error: `unknown_tool:${name}` }
+      const scope = String(args.scope ?? 'all')
+      const days = Number(args.days ?? 7)
+      try {
+        return await convex.query(api.analytics.querySales, { scope, days })
+      } catch (e) {
+        return {
+          ok: false,
+          error: e instanceof Error ? e.message : 'query_failed',
+          scope_label: scope,
+        }
+      }
     },
   })
 
-  const result = agent.lastTool?.result as StoreMetricResult | undefined
+  const result = agent.lastTool?.result as SalesResult | undefined
   const isRunning =
     agent.state !== 'idle' &&
     agent.state !== 'error' &&
@@ -120,8 +138,9 @@ function AskPage() {
         <header className="stack-tight">
           <h1 style={{ margin: 0 }}>Talk to your data</h1>
           <p className="muted" style={{ margin: 0 }}>
-            Ask in plain English. The agent calls a tool for the numbers, then
-            narrates the insight. Spanish support coming next.
+            Ask in plain English about Tiendita stores. The agent calls a tool
+            that hits the Convex rollup_daily_store_sales table, then narrates
+            the insight.
           </p>
         </header>
 
@@ -130,11 +149,13 @@ function AskPage() {
             <Button
               variant="primary"
               onClick={() => void agent.start()}
-              disabled={agent.state === 'connecting'}
+              disabled={agent.state === 'connecting' || !ready}
             >
               {agent.state === 'connecting'
-                ? 'Connecting…'
-                : 'Start conversation'}
+                ? 'Connecting...'
+                : ready
+                  ? 'Start conversation'
+                  : 'Loading data...'}
             </Button>
           ) : (
             <Button variant="ghost" onClick={() => agent.stop()}>
@@ -167,6 +188,26 @@ function AskPage() {
             )}
           </div>
         </div>
+
+        {ready && (
+          <details className="muted" style={{ fontSize: 'var(--text-sm)' }}>
+            <summary>
+              Stores the agent knows about ({stores?.length ?? 0})
+            </summary>
+            <ul
+              style={{
+                margin: 'var(--space-2) 0 0',
+                paddingLeft: 'var(--space-4)',
+              }}
+            >
+              {(stores ?? []).map((s) => (
+                <li key={s.code}>
+                  <strong>{s.code}</strong> - {s.name} - {s.region}
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </section>
     </AppShell>
   )
@@ -174,10 +215,10 @@ function AskPage() {
 
 const STATE_LABELS: Record<AgentState, string> = {
   idle: 'idle',
-  connecting: 'connecting…',
+  connecting: 'connecting...',
   listening: 'listening',
   user_speaking: 'you are speaking',
-  thinking: 'thinking…',
+  thinking: 'thinking...',
   speaking: 'agent is speaking',
   error: 'error',
 }
@@ -210,7 +251,7 @@ function Conversation({
       <p className="muted">
         {state === 'idle' || state === 'error'
           ? 'Click "Start conversation" and grant mic access.'
-          : 'Listening for your question…'}
+          : 'Listening for your question...'}
       </p>
     )
   }
@@ -251,56 +292,83 @@ function Conversation({
   )
 }
 
-function ResultCard({ r }: { r: StoreMetricResult }) {
-  const max = Math.max(...r.series.map((p) => p.value)) || 1
+function ResultCard({ r }: { r: SalesResult }) {
+  if (!r.ok) {
+    return (
+      <div className="stack-tight">
+        <div className="muted">scope: {r.scope_label}</div>
+        <p className="error" style={{ margin: 0 }}>
+          {r.error === 'unknown_scope'
+            ? "I couldn't find that store or region in the data."
+            : r.error === 'no_data'
+              ? 'No sales data has been seeded yet.'
+              : r.error}
+        </p>
+      </div>
+    )
+  }
+  const max = Math.max(...r.series.map((p) => p.revenue)) || 1
+  const avgPerDay = r.total_revenue_mxn / Math.max(1, r.series.length)
   return (
     <div className="stack-tight">
       <div className="muted">
-        {r.metric} · {r.scope} · {r.period}
+        {r.scope_label} - {r.date_range}
       </div>
       <div style={{ fontSize: 'var(--text-3xl)', fontWeight: 600 }}>
-        {r.value.toLocaleString()}{' '}
+        ${r.total_revenue_mxn.toLocaleString()}{' '}
         <span className="muted" style={{ fontSize: 'var(--text-base)' }}>
-          {r.unit}
+          MXN
         </span>
       </div>
-      <p style={{ margin: 0 }}>{r.insight}</p>
+      <p style={{ margin: 0 }}>
+        {r.total_transactions.toLocaleString()} transactions -{' '}
+        {r.total_units.toLocaleString()} units - ~$
+        {Math.round(avgPerDay).toLocaleString()}/day
+      </p>
       <svg
         viewBox="0 0 280 130"
         width="100%"
         height="130"
         role="img"
-        aria-label={`${r.metric} chart`}
+        aria-label="daily revenue"
         style={{ marginTop: 'var(--space-2)' }}
       >
         {r.series.map((p, i) => {
           const slot = 280 / r.series.length
-          const w = slot - 6
-          const h = (p.value / max) * 96
-          const x = i * slot + 3
+          const w = Math.max(2, slot - 2)
+          const h = (p.revenue / max) * 96
+          const x = i * slot + (slot - w) / 2
           const y = 100 - h
           return (
-            <g key={p.label}>
-              <rect
-                x={x}
-                y={y}
-                width={w}
-                height={h}
-                fill="var(--color-accent)"
-                rx="4"
-              />
-              <text
-                x={x + w / 2}
-                y={118}
-                fontSize="10"
-                textAnchor="middle"
-                fill="var(--color-fg-muted)"
-              >
-                {p.label}
-              </text>
-            </g>
+            <rect
+              key={p.date}
+              x={x}
+              y={y}
+              width={w}
+              height={h}
+              fill="var(--color-accent)"
+              rx="2"
+            >
+              <title>{`${p.date}: $${p.revenue.toLocaleString()} MXN`}</title>
+            </rect>
           )
         })}
+        {r.series.length > 0 && (
+          <>
+            <text x={6} y={118} fontSize="10" fill="var(--color-fg-muted)">
+              {r.series[0]?.date}
+            </text>
+            <text
+              x={274}
+              y={118}
+              fontSize="10"
+              textAnchor="end"
+              fill="var(--color-fg-muted)"
+            >
+              {r.series[r.series.length - 1]?.date}
+            </text>
+          </>
+        )}
       </svg>
     </div>
   )
