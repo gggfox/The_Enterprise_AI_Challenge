@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cat_bebidas",
+    "slug": "bebidas",
+    "name_es": "Bebidas",
+    "sortOrder": 1
+  },
+  {
+    "id": "cat_snacks",
+    "slug": "snacks",
+    "name_es": "Snacks",
+    "sortOrder": 2
+  },
+  {
+    "id": "cat_dulces",
+    "slug": "dulces",
+    "name_es": "Dulces",
+    "sortOrder": 3
+  },
+  {
+    "id": "cat_panaderia",
+    "slug": "panaderia",
+    "name_es": "Panadería",
+    "sortOrder": 4
+  },
+  {
+    "id": "cat_abarrotes",
+    "slug": "abarrotes",
+    "name_es": "Abarrotes",
+    "sortOrder": 5
+  },
+  {
+    "id": "cat_cuidado_personal",
+    "slug": "cuidado_personal",
+    "name_es": "Cuidado Personal",
+    "sortOrder": 6
+  },
+  {
+    "id": "cat_tabaqueria",
+    "slug": "tabaqueria",
+    "name_es": "Tabaquería",
+    "sortOrder": 7
+  },
+  {
+    "id": "cat_servicios",
+    "slug": "servicios",
+    "name_es": "Servicios",
+    "sortOrder": 8
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "promo_BUEN-FIN-2025",
+    "code": "BUEN-FIN-2025",
+    "name_es": "Buen Fin 2025: 20% en bebidas",
+    "startAt": 1763013600000,
+    "endAt": 1763618400000,
+    "discountPct": 20,
+    "scopeCategoryId": "cat_bebidas"
+  },
+  {
+    "id": "promo_NAV-2024",
+    "code": "NAV-2024",
+    "name_es": "Promo Navideña: 15% en dulces",
+    "startAt": 1734674400000,
+    "endAt": 1735884000000,
+    "discountPct": 15,
+    "scopeCategoryId": "cat_dulces"
+  },
+  {
+    "id": "promo_VERANO-2025",
+    "code": "VERANO-2025",
+    "name_es": "Promo Verano: 12% en snacks",
+    "startAt": 1751349600000,
+    "endAt": 1753164000000,
+    "discountPct": 12,
+    "scopeCategoryId": "cat_snacks"
+  },
+  {
+    "id": "promo_REGRESO-CLASES",
+    "code": "REGRESO-CLASES",
+    "name_es": "Regreso a Clases 2025",
+    "startAt": 1755237600000,
+    "endAt": 1756188000000,
+    "discountPct": 10,
+    "scopeCategoryId": "cat_panaderia"
+  },
+  {
+    "id": "promo_MADRES-2025",
+    "code": "MADRES-2025",
+    "name_es": "Día de las Madres",
+    "startAt": 1746684000000,
+    "endAt": 1747029600000,
+    "discountPct": 15,
+    "scopeCategoryId": "cat_panaderia"
+  },
+  {
+    "id": "promo_INDEPEND-2025",
+    "code": "INDEPEND-2025",
+    "name_es": "Mes Patrio",
+    "startAt": 1757829600000,
+    "endAt": 1758434400000,
+    "discountPct": 10,
+    "scopeCategoryId": "cat_bebidas"
+  }
+]

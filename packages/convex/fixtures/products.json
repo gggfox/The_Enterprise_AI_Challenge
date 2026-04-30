@@ -1,0 +1,1055 @@
+[
+  {
+    "id": "prod_BEB-CC-600",
+    "sku": "BEB-CC-600",
+    "name_es": "Coca-Cola 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 22,
+    "costMxn": 16,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-CC-2L",
+    "sku": "BEB-CC-2L",
+    "name_es": "Coca-Cola 2L",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 42,
+    "costMxn": 32,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-CC-355",
+    "sku": "BEB-CC-355",
+    "name_es": "Coca-Cola Lata 355ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 18,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-CCZ-600",
+    "sku": "BEB-CCZ-600",
+    "name_es": "Coca-Cola Sin Azúcar 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 22,
+    "costMxn": 16,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-SP-600",
+    "sku": "BEB-SP-600",
+    "name_es": "Sprite 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 22,
+    "costMxn": 16,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-FA-600",
+    "sku": "BEB-FA-600",
+    "name_es": "Fanta Naranja 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 22,
+    "costMxn": 16,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-PE-600",
+    "sku": "BEB-PE-600",
+    "name_es": "Pepsi 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-MA-600",
+    "sku": "BEB-MA-600",
+    "name_es": "Manzanita Sol 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-7UP-600",
+    "sku": "BEB-7UP-600",
+    "name_es": "7UP 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-MIR-600",
+    "sku": "BEB-MIR-600",
+    "name_es": "Mirinda 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-JAR-600",
+    "sku": "BEB-JAR-600",
+    "name_es": "Jarritos Tamarindo 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 18,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-JAM-600",
+    "sku": "BEB-JAM-600",
+    "name_es": "Jarritos Mandarina 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 18,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-SAN-600",
+    "sku": "BEB-SAN-600",
+    "name_es": "Sangría Señorial 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-SQ-600",
+    "sku": "BEB-SQ-600",
+    "name_es": "Squirt 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-BO-500",
+    "sku": "BEB-BO-500",
+    "name_es": "Boing Mango 500ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 16,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-BG-500",
+    "sku": "BEB-BG-500",
+    "name_es": "Boing Guayaba 500ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 16,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-JUM-1L",
+    "sku": "BEB-JUM-1L",
+    "name_es": "Jumex Mango 1L",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 28,
+    "costMxn": 20,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-DV-355",
+    "sku": "BEB-DV-355",
+    "name_es": "Del Valle Durazno 355ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 17,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-CIE-600",
+    "sku": "BEB-CIE-600",
+    "name_es": "Agua Ciel 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 13,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-CIE-1.5",
+    "sku": "BEB-CIE-1.5",
+    "name_es": "Agua Ciel 1.5L",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 19,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-BON-1.5",
+    "sku": "BEB-BON-1.5",
+    "name_es": "Agua Bonafont 1.5L",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 21,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-EP-600",
+    "sku": "BEB-EP-600",
+    "name_es": "Epura 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 13,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-TC-600",
+    "sku": "BEB-TC-600",
+    "name_es": "Topo Chico 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 17,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-PW-600",
+    "sku": "BEB-PW-600",
+    "name_es": "Powerade Mora Azul 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 24,
+    "costMxn": 17,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-GAT-600",
+    "sku": "BEB-GAT-600",
+    "name_es": "Gatorade Naranja 600ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 26,
+    "costMxn": 18,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-RB-355",
+    "sku": "BEB-RB-355",
+    "name_es": "Red Bull 355ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 52,
+    "costMxn": 36,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-MO-473",
+    "sku": "BEB-MO-473",
+    "name_es": "Monster Verde 473ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 48,
+    "costMxn": 34,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-VIVE-355",
+    "sku": "BEB-VIVE-355",
+    "name_es": "Vive100 355ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-NES-220",
+    "sku": "BEB-NES-220",
+    "name_es": "Nescafé Listo 220ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 28,
+    "costMxn": 19,
+    "isActive": true
+  },
+  {
+    "id": "prod_BEB-SBX-281",
+    "sku": "BEB-SBX-281",
+    "name_es": "Frappuccino Starbucks 281ml",
+    "categoryId": "cat_bebidas",
+    "priceMxn": 38,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-SAB-O",
+    "sku": "SNK-SAB-O",
+    "name_es": "Sabritas Original 45g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-SAB-A",
+    "sku": "SNK-SAB-A",
+    "name_es": "Sabritas Adobadas 45g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-SAB-Q",
+    "sku": "SNK-SAB-Q",
+    "name_es": "Sabritas Queso y Chile 45g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-DOR-N",
+    "sku": "SNK-DOR-N",
+    "name_es": "Doritos Nacho 62g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-DOR-D",
+    "sku": "SNK-DOR-D",
+    "name_es": "Doritos Diablo 62g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-DOR-I",
+    "sku": "SNK-DOR-I",
+    "name_es": "Doritos Incógnita 62g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CHE-T",
+    "sku": "SNK-CHE-T",
+    "name_es": "Cheetos Torciditos 52g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CHE-F",
+    "sku": "SNK-CHE-F",
+    "name_es": "Cheetos Flamin Hot 52g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-RUF-Q",
+    "sku": "SNK-RUF-Q",
+    "name_es": "Ruffles Queso 50g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-TAK-F",
+    "sku": "SNK-TAK-F",
+    "name_es": "Takis Fuego 65g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-TAK-O",
+    "sku": "SNK-TAK-O",
+    "name_es": "Takis Original 65g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CHI-S",
+    "sku": "SNK-CHI-S",
+    "name_es": "Chicharrón Salsa Verde 30g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 16,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CAC-J",
+    "sku": "SNK-CAC-J",
+    "name_es": "Cacahuates Japoneses 80g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-PRI-O",
+    "sku": "SNK-PRI-O",
+    "name_es": "Pringles Original 124g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 38,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-PRI-Q",
+    "sku": "SNK-PRI-Q",
+    "name_es": "Pringles Queso 124g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 38,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-BAR-H",
+    "sku": "SNK-BAR-H",
+    "name_es": "Barcel Hot Nuts 60g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 17,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CHU-O",
+    "sku": "SNK-CHU-O",
+    "name_es": "Chips Original 45g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 17,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-RAN-V",
+    "sku": "SNK-RAN-V",
+    "name_es": "Rancheritos 56g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-CRU-V",
+    "sku": "SNK-CRU-V",
+    "name_es": "Cruji Tacos Salsa Verde 30g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 16,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-PAL-S",
+    "sku": "SNK-PAL-S",
+    "name_es": "Palomitas Sabritas 32g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 17,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-FRI-T",
+    "sku": "SNK-FRI-T",
+    "name_es": "Fritos Twists 60g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_SNK-MAFER",
+    "sku": "SNK-MAFER",
+    "name_es": "Cacahuates Mafer Salados 80g",
+    "categoryId": "cat_snacks",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-CV-18",
+    "sku": "DUL-CV-18",
+    "name_es": "Carlos V 18g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 12,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-MIL-50",
+    "sku": "DUL-MIL-50",
+    "name_es": "Milky Way 52g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 19,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-SNI-50",
+    "sku": "DUL-SNI-50",
+    "name_es": "Snickers 52g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-MM-49",
+    "sku": "DUL-MM-49",
+    "name_es": "M&M's Cacahuate 49g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-BUB-4",
+    "sku": "DUL-BUB-4",
+    "name_es": "Bubaloo Tutti Frutti",
+    "categoryId": "cat_dulces",
+    "priceMxn": 3,
+    "costMxn": 2,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-PEL-22",
+    "sku": "DUL-PEL-22",
+    "name_es": "Pelón Pelo Rico 22g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 11,
+    "costMxn": 7,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-PUL-20",
+    "sku": "DUL-PUL-20",
+    "name_es": "Pulparindo 20g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 4,
+    "costMxn": 2,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-VRM-20",
+    "sku": "DUL-VRM-20",
+    "name_es": "Vero Mango 20g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 4,
+    "costMxn": 2,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-ROC-22",
+    "sku": "DUL-ROC-22",
+    "name_es": "Rockaleta 22g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-CHA-12",
+    "sku": "DUL-CHA-12",
+    "name_es": "Chamoy Cucharita 12g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-PAN-9",
+    "sku": "DUL-PAN-9",
+    "name_es": "Panditas 9g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 4,
+    "costMxn": 2,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-TRI-13",
+    "sku": "DUL-TRI-13",
+    "name_es": "Trident Menta 13g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 18,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-HAL-25",
+    "sku": "DUL-HAL-25",
+    "name_es": "Halls Mentol 25g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 18,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-DUV-50",
+    "sku": "DUL-DUV-50",
+    "name_es": "Duvalín Bicolor 14g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 4,
+    "costMxn": 2,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-MAZ-15",
+    "sku": "DUL-MAZ-15",
+    "name_es": "Mazapán De La Rosa 15g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_DUL-PAL-30",
+    "sku": "DUL-PAL-30",
+    "name_es": "Paleta Vero Elote 30g",
+    "categoryId": "cat_dulces",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-CON-1",
+    "sku": "PAN-CON-1",
+    "name_es": "Concha Vainilla",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 12,
+    "costMxn": 7,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-CON-C",
+    "sku": "PAN-CON-C",
+    "name_es": "Concha Chocolate",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 12,
+    "costMxn": 7,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-CUE-1",
+    "sku": "PAN-CUE-1",
+    "name_es": "Cuernito",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 14,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-DON-G",
+    "sku": "PAN-DON-G",
+    "name_es": "Dona Glaseada",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 14,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-DON-C",
+    "sku": "PAN-DON-C",
+    "name_es": "Dona Chocolate",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 16,
+    "costMxn": 9,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-MAN-4",
+    "sku": "PAN-MAN-4",
+    "name_es": "Mantecadas Bimbo 4pz",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 28,
+    "costMxn": 18,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-NIT-2",
+    "sku": "PAN-NIT-2",
+    "name_es": "Nito 2pz",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 18,
+    "costMxn": 11,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-ROL-C",
+    "sku": "PAN-ROL-C",
+    "name_es": "Rol de Canela",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 16,
+    "costMxn": 10,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-OJO-1",
+    "sku": "PAN-OJO-1",
+    "name_es": "Ojo de Buey",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 14,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-GAR-1",
+    "sku": "PAN-GAR-1",
+    "name_es": "Garibaldi",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 16,
+    "costMxn": 10,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-PAY-3",
+    "sku": "PAN-PAY-3",
+    "name_es": "Payaso 3pz",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 22,
+    "costMxn": 14,
+    "isActive": true
+  },
+  {
+    "id": "prod_PAN-EMP-Q",
+    "sku": "PAN-EMP-Q",
+    "name_es": "Empanada Queso",
+    "categoryId": "cat_panaderia",
+    "priceMxn": 14,
+    "costMxn": 8,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-ATU-140",
+    "sku": "ABA-ATU-140",
+    "name_es": "Atún Tuny 140g",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 24,
+    "costMxn": 17,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-FRI-560",
+    "sku": "ABA-FRI-560",
+    "name_es": "Frijoles La Costeña 560g",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 28,
+    "costMxn": 20,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-MAR-S",
+    "sku": "ABA-MAR-S",
+    "name_es": "Sopa Maruchan Camarón",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 14,
+    "costMxn": 9,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-MAR-P",
+    "sku": "ABA-MAR-P",
+    "name_es": "Sopa Maruchan Pollo",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 14,
+    "costMxn": 9,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-GAL-M",
+    "sku": "ABA-GAL-M",
+    "name_es": "Galletas Marías Gamesa",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 18,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-GAL-E",
+    "sku": "ABA-GAL-E",
+    "name_es": "Galletas Emperador Chocolate",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 22,
+    "costMxn": 15,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-PAN-B",
+    "sku": "ABA-PAN-B",
+    "name_es": "Pan Bimbo Blanco Grande",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 52,
+    "costMxn": 38,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-TOR-T",
+    "sku": "ABA-TOR-T",
+    "name_es": "Tortillas Tía Rosa 1kg",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 36,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-ACE-1L",
+    "sku": "ABA-ACE-1L",
+    "name_es": "Aceite 1-2-3 1L",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 58,
+    "costMxn": 44,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-SAL-F",
+    "sku": "ABA-SAL-F",
+    "name_es": "Sal La Fina 1kg",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 18,
+    "costMxn": 13,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-AZU-Z",
+    "sku": "ABA-AZU-Z",
+    "name_es": "Azúcar Zulka 1kg",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 32,
+    "costMxn": 24,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-NES-S",
+    "sku": "ABA-NES-S",
+    "name_es": "Café Nescafé Sobre 7g",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 8,
+    "costMxn": 5,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-LEC-1L",
+    "sku": "ABA-LEC-1L",
+    "name_es": "Leche Alpura 1L",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 28,
+    "costMxn": 21,
+    "isActive": true
+  },
+  {
+    "id": "prod_ABA-HUE-12",
+    "sku": "ABA-HUE-12",
+    "name_es": "Huevo Bachoco 12pz",
+    "categoryId": "cat_abarrotes",
+    "priceMxn": 52,
+    "costMxn": 41,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-PAS-C",
+    "sku": "CUI-PAS-C",
+    "name_es": "Pasta Colgate 75ml",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 32,
+    "costMxn": 22,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-CEP-O",
+    "sku": "CUI-CEP-O",
+    "name_es": "Cepillo Oral-B",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 38,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-DES-S",
+    "sku": "CUI-DES-S",
+    "name_es": "Desodorante Speed Stick 50g",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 42,
+    "costMxn": 29,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-GEL-E",
+    "sku": "CUI-GEL-E",
+    "name_es": "Gel Ego Sachet 9g",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 8,
+    "costMxn": 5,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-SHA-S",
+    "sku": "CUI-SHA-S",
+    "name_es": "Shampoo Sedal Sachet 12ml",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-TOA-S",
+    "sku": "CUI-TOA-S",
+    "name_es": "Toalla Saba Nocturna 8pz",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 38,
+    "costMxn": 27,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-PAÑ-H",
+    "sku": "CUI-PAÑ-H",
+    "name_es": "Pañal Huggies Etapa 4 1pz",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 18,
+    "costMxn": 12,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-RAS-G",
+    "sku": "CUI-RAS-G",
+    "name_es": "Rastrillo Gillette 2pz",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 28,
+    "costMxn": 20,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-COND-T",
+    "sku": "CUI-COND-T",
+    "name_es": "Condones Trojan 3pz",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 42,
+    "costMxn": 29,
+    "isActive": true
+  },
+  {
+    "id": "prod_CUI-PAR-T",
+    "sku": "CUI-PAR-T",
+    "name_es": "Tampones Tampax 8pz",
+    "categoryId": "cat_cuidado_personal",
+    "priceMxn": 48,
+    "costMxn": 34,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-MAR-R",
+    "sku": "TAB-MAR-R",
+    "name_es": "Marlboro Rojo 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 78,
+    "costMxn": 64,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-MAR-V",
+    "sku": "TAB-MAR-V",
+    "name_es": "Marlboro Verde 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 78,
+    "costMxn": 64,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-MAR-G",
+    "sku": "TAB-MAR-G",
+    "name_es": "Marlboro Gold 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 78,
+    "costMxn": 64,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-CAM-1",
+    "sku": "TAB-CAM-1",
+    "name_es": "Camel Filters 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 76,
+    "costMxn": 62,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-PAL-1",
+    "sku": "TAB-PAL-1",
+    "name_es": "Pall Mall 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 72,
+    "costMxn": 59,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-DEL-1",
+    "sku": "TAB-DEL-1",
+    "name_es": "Delicados 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 62,
+    "costMxn": 50,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-HID-1",
+    "sku": "TAB-HID-1",
+    "name_es": "Hidalgo 20pz",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 60,
+    "costMxn": 48,
+    "isActive": true
+  },
+  {
+    "id": "prod_TAB-CER-1",
+    "sku": "TAB-CER-1",
+    "name_es": "Cerillos Clásicos",
+    "categoryId": "cat_tabaqueria",
+    "priceMxn": 5,
+    "costMxn": 3,
+    "isActive": true
+  },
+  {
+    "id": "prod_SRV-TEL-50",
+    "sku": "SRV-TEL-50",
+    "name_es": "Recarga Telcel 50",
+    "categoryId": "cat_servicios",
+    "priceMxn": 50,
+    "costMxn": 48,
+    "isActive": true
+  },
+  {
+    "id": "prod_SRV-TEL-100",
+    "sku": "SRV-TEL-100",
+    "name_es": "Recarga Telcel 100",
+    "categoryId": "cat_servicios",
+    "priceMxn": 100,
+    "costMxn": 95,
+    "isActive": true
+  },
+  {
+    "id": "prod_SRV-TEL-200",
+    "sku": "SRV-TEL-200",
+    "name_es": "Recarga Telcel 200",
+    "categoryId": "cat_servicios",
+    "priceMxn": 200,
+    "costMxn": 190,
+    "isActive": true
+  },
+  {
+    "id": "prod_SRV-ATT-50",
+    "sku": "SRV-ATT-50",
+    "name_es": "Recarga AT&T 50",
+    "categoryId": "cat_servicios",
+    "priceMxn": 50,
+    "costMxn": 48,
+    "isActive": true
+  },
+  {
+    "id": "prod_SRV-MOV-50",
+    "sku": "SRV-MOV-50",
+    "name_es": "Recarga Movistar 50",
+    "categoryId": "cat_servicios",
+    "priceMxn": 50,
+    "costMxn": 48,
+    "isActive": true
+  }
+]

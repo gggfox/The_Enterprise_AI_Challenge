@@ -1,6 +1,7 @@
 import { AppShell } from '@/components/AppShell/AppShell'
 import { useApiMutation } from '@/lib/api/useApiMutation'
 import { useAuthedFetch } from '@/lib/auth'
+import { useAuth } from '@clerk/clerk-react'
 import { api } from '@enterprise-ai/convex/convex/_generated/api'
 import { type Role, can, canMaybe, isRole } from '@enterprise-ai/shared/auth'
 import { useQueryClient } from '@tanstack/react-query'
@@ -21,11 +22,16 @@ type PromptDTO = {
 }
 
 function PromptsPage() {
+  // Gate Convex subscriptions on auth state. AppShell decides whether to
+  // render children, but hooks here run regardless -- without `'skip'`
+  // we'd subscribe to `prompts.list` while signed out and trigger an
+  // `unauthenticated` error overlay.
+  const { isSignedIn } = useAuth()
   const me = useConvexQuery(api.users.me)
-  // Reactive read straight from Convex's websocket. No Bridge call needed.
-  const prompts = useConvexQuery(api.prompts.list) as
-    | readonly PromptDTO[]
-    | undefined
+  const prompts = useConvexQuery(
+    api.prompts.list,
+    isSignedIn && me ? {} : 'skip',
+  ) as readonly PromptDTO[] | undefined
 
   const queryClient = useQueryClient()
   const fetchWithAuth = useAuthedFetch()

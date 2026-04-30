@@ -1,6 +1,7 @@
 import { AppShell } from '@/components/AppShell/AppShell'
 import { useApiMutation } from '@/lib/api/useApiMutation'
 import { useAuthedFetch } from '@/lib/auth'
+import { useAuth } from '@clerk/clerk-react'
 import { api } from '@enterprise-ai/convex/convex/_generated/api'
 import { ALL_ROLES, type Role, isRole } from '@enterprise-ai/shared/auth'
 import { useQueryClient } from '@tanstack/react-query'
@@ -17,8 +18,16 @@ type UserDTO = {
 }
 
 function AdminPage() {
-  // Reactive read of users so role changes by other admins show up live.
-  const users = useConvexQuery(api.users.list) as readonly UserDTO[] | undefined
+  // Gate the subscription on auth state. The hook runs before AppShell
+  // decides whether to render children, so without `'skip'` we'd
+  // subscribe -- and have Convex throw `unauthenticated` -- while the
+  // user is signed out or still being provisioned.
+  const { isSignedIn } = useAuth()
+  const me = useConvexQuery(api.users.me)
+  const users = useConvexQuery(
+    api.users.list,
+    isSignedIn && me ? {} : 'skip',
+  ) as readonly UserDTO[] | undefined
   const queryClient = useQueryClient()
   const fetchWithAuth = useAuthedFetch()
 

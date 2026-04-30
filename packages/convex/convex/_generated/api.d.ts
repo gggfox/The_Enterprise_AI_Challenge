@@ -12,6 +12,7 @@ import type * as _shared_identity from "../_shared/identity.js";
 import type * as http from "../http.js";
 import type * as prompts from "../prompts.js";
 import type * as seed from "../seed.js";
+import type * as seedRetail from "../seedRetail.js";
 import type * as users from "../users.js";
 
 import type {
@@ -25,6 +26,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   prompts: typeof prompts;
   seed: typeof seed;
+  seedRetail: typeof seedRetail;
   users: typeof users;
 }>;
 

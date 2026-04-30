@@ -23,7 +23,9 @@
     "dev:codegen": "convex codegen --typecheck disable",
     "deploy": "convex deploy",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check convex/"
+    "lint": "biome check convex/ scripts/",
+    "generate-fixtures": "tsx scripts/generate-fixtures.ts",
+    "seed-retail": "dotenv -e ../../.env -- tsx scripts/run-seed.ts"
   },
   "dependencies": {
     "@enterprise-ai/shared": "workspace:*",
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@types/node": "^22.10.7",
     "dotenv-cli": "^11.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.3"
   }
 }
