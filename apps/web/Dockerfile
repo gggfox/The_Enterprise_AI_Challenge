@@ -19,6 +19,16 @@ RUN pnpm install --frozen-lockfile
 # Copy sources after install so source edits don't bust the install layer.
 COPY apps/web/ apps/web/
 
+# VITE_* values are baked into the client bundle at build time, so they
+# must arrive as Docker build args (Dokploy "Build-time Arguments") and
+# be promoted to ENV before `vite build` runs.
+ARG VITE_CONVEX_URL
+ARG VITE_API_BASE
+ARG VITE_CLERK_PUBLISHABLE_KEY
+ENV VITE_CONVEX_URL=${VITE_CONVEX_URL} \
+    VITE_API_BASE=${VITE_API_BASE} \
+    VITE_CLERK_PUBLISHABLE_KEY=${VITE_CLERK_PUBLISHABLE_KEY}
+
 RUN pnpm --filter @enterprise-ai/web build
 
 
