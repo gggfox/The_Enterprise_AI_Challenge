@@ -1,0 +1,140 @@
+{
+  "brand": {
+    "name": "Tiendita",
+    "tagline_es": "Tu tienda de la esquina",
+    "tagline_en": "Your corner store"
+  },
+  "generatedAt": 1777528800000,
+  "startDate": "2024-11-01",
+  "endDate": "2026-04-30",
+  "categories": [
+    {
+      "slug": "bebidas",
+      "name_es": "Bebidas",
+      "aliases_en": [
+        "drinks",
+        "beverages",
+        "sodas",
+        "soft drinks",
+        "water"
+      ]
+    },
+    {
+      "slug": "snacks",
+      "name_es": "Snacks",
+      "aliases_en": [
+        "snacks",
+        "chips",
+        "crisps",
+        "salty snacks",
+        "botanas"
+      ]
+    },
+    {
+      "slug": "dulces",
+      "name_es": "Dulces",
+      "aliases_en": [
+        "candy",
+        "sweets",
+        "chocolates",
+        "gum"
+      ]
+    },
+    {
+      "slug": "panaderia",
+      "name_es": "Panadería",
+      "aliases_en": [
+        "bakery",
+        "bread",
+        "pastries",
+        "sweet bread",
+        "pan dulce"
+      ]
+    },
+    {
+      "slug": "abarrotes",
+      "name_es": "Abarrotes",
+      "aliases_en": [
+        "groceries",
+        "staples",
+        "pantry",
+        "canned goods"
+      ]
+    },
+    {
+      "slug": "cuidado_personal",
+      "name_es": "Cuidado Personal",
+      "aliases_en": [
+        "personal care",
+        "toiletries",
+        "hygiene",
+        "health"
+      ]
+    },
+    {
+      "slug": "tabaqueria",
+      "name_es": "Tabaquería",
+      "aliases_en": [
+        "tobacco",
+        "cigarettes",
+        "smoking"
+      ]
+    },
+    {
+      "slug": "servicios",
+      "name_es": "Servicios",
+      "aliases_en": [
+        "services",
+        "top-ups",
+        "bill payments",
+        "recargas",
+        "lottery"
+      ]
+    }
+  ],
+  "serviceTypes": [
+    {
+      "slug": "recarga",
+      "aliases_en": [
+        "phone top-up",
+        "mobile recharge",
+        "top-up"
+      ]
+    },
+    {
+      "slug": "pago_servicio",
+      "aliases_en": [
+        "bill payment",
+        "utility payment",
+        "service payment"
+      ]
+    },
+    {
+      "slug": "transferencia",
+      "aliases_en": [
+        "money transfer",
+        "remittance",
+        "wire"
+      ]
+    },
+    {
+      "slug": "loteria",
+      "aliases_en": [
+        "lottery",
+        "lotto"
+      ]
+    }
+  ],
+  "narratives": {
+    "decliningStoreCode": "CDMX-IZT",
+    "starProductSku": "BEB-RB-355",
+    "underperformingCategorySlug": "snacks",
+    "servicesShareStart": 0.08,
+    "servicesShareEnd": 0.18,
+    "regionTicketMultipliers": {
+      "CDMX": 1,
+      "Nuevo León": 1.2,
+      "Jalisco": 0.9
+    }
+  }
+}

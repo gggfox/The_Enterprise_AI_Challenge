@@ -1,0 +1,82 @@
+[
+  {
+    "id": "store_CDMX-POL",
+    "code": "CDMX-POL",
+    "name_es": "Tiendita Polanco",
+    "city": "Ciudad de México",
+    "region": "CDMX",
+    "openedAt": 1673848800000
+  },
+  {
+    "id": "store_CDMX-RNO",
+    "code": "CDMX-RNO",
+    "name_es": "Tiendita Roma Norte",
+    "city": "Ciudad de México",
+    "region": "CDMX",
+    "openedAt": 1692856800000
+  },
+  {
+    "id": "store_CDMX-COY",
+    "code": "CDMX-COY",
+    "name_es": "Tiendita Coyoacán",
+    "city": "Ciudad de México",
+    "region": "CDMX",
+    "openedAt": 1647928800000
+  },
+  {
+    "id": "store_CDMX-IZT",
+    "code": "CDMX-IZT",
+    "name_es": "Tiendita Iztapalapa",
+    "city": "Ciudad de México",
+    "region": "CDMX",
+    "openedAt": 1704088800000
+  },
+  {
+    "id": "store_CDMX-SF",
+    "code": "CDMX-SF",
+    "name_es": "Tiendita Santa Fe",
+    "city": "Ciudad de México",
+    "region": "CDMX",
+    "openedAt": 1715320800000
+  },
+  {
+    "id": "store_MTY-SP",
+    "code": "MTY-SP",
+    "name_es": "Tiendita San Pedro",
+    "city": "Monterrey",
+    "region": "Nuevo León",
+    "openedAt": 1682488800000
+  },
+  {
+    "id": "store_MTY-CEN",
+    "code": "MTY-CEN",
+    "name_es": "Tiendita Centro MTY",
+    "city": "Monterrey",
+    "region": "Nuevo León",
+    "openedAt": 1665208800000
+  },
+  {
+    "id": "store_MTY-VOR",
+    "code": "MTY-VOR",
+    "name_es": "Tiendita Valle Oriente",
+    "city": "Monterrey",
+    "region": "Nuevo León",
+    "openedAt": 1725688800000
+  },
+  {
+    "id": "store_GDL-PRO",
+    "code": "GDL-PRO",
+    "name_es": "Tiendita Providencia",
+    "city": "Guadalajara",
+    "region": "Jalisco",
+    "openedAt": 1695448800000
+  },
+  {
+    "id": "store_GDL-CHA",
+    "code": "GDL-CHA",
+    "name_es": "Tiendita Chapalita",
+    "city": "Guadalajara",
+    "region": "Jalisco",
+    "openedAt": 1708408800000
+  }
+]
