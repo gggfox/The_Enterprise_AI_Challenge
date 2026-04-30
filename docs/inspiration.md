@@ -52,6 +52,21 @@ snapshot as the lineage anchor.
 - **Testing stack** — Vitest unit/component (`pnpm test`), coverage variant for CI (`pnpm test:coverage`), Playwright E2E (`playwright.config.ts`, `pnpm test:e2e`).
 - **Doc hygiene** — `.markdownlint.json`, `.prettierrc.json`, `documentation/runbooks/` for go-live procedures.
 
+### Backend, ABAC, and observability scaffold
+
+- **Convex workspace package** (`packages/convex/`) with package-level `exports` for `_generated/api`, `_generated/server`, `_generated/dataModel`, and `schema.ts` — adapted from `logisticsPractice/packages/convex/`.
+- **Fastify Bridge layout** (`apps/api/src/{config,otel,logger,server}.ts`, `apps/api/src/plugins/`, `apps/api/src/routes/`, `apps/api/src/services/`) and the boot-time-logged singleton config pattern — adapted from `logisticsPractice/apps/api/src/`.
+- **Pino → OTel log bridge** that bypasses `pino transport` to keep one in-process OTel SDK (`apps/api/src/logger.ts`) — adapted from `logisticsPractice/apps/api/src/logger.ts`.
+- **Wide-event per-request logging** with success sampling + slow threshold (`apps/api/src/plugins/wide-event.ts`) — adapted from `logisticsPractice/apps/api/src/plugins/wide-event.ts`.
+- **Convention-by-prefix auth plugin**: bypass `/health`, `x-api-key` for `/admin`, `/webhooks`, `/internal`; Bearer JWT verified via Convex JWKS for everything else (`apps/api/src/plugins/auth.ts`) — structurally adapted from `logisticsPractice/apps/api/src/plugins/api-key-auth.ts`, with Convex Auth Bearer verification swapped in for the static API keys logisticsPractice uses.
+- **Bruno collection at `apps/api/bruno/`** with one folder per auth surface and a `*-forbidden.bru` variant per ABAC-gated mutation — adapted from `logisticsPractice/apps/api/bruno/`.
+- **Convex `auth.config.ts` shape and dedicated `convex/_shared/` helper folder** for `requireUser` / `authorize` / `requireDoc` helpers — adapted from `references/Tavli/convex/auth.config.ts` and `references/Tavli/convex/_shared/`.
+- **Convex Auth wiring** in `packages/convex/convex/{auth.ts,http.ts}` (Password + Anonymous providers exposed via `convexAuth` and HTTP routes registered via `auth.addHttpRoutes(http)`) — original to this project; Tavli uses Clerk so the surface is similar but the issuer differs.
+- **OpenObserve container** in `infra/docker-compose.yml` (`public.ecr.aws/zinclabs/openobserve`) — original to this project; replaces logisticsPractice's SigNoz stack because of the documented memory issues in the SigNoz collector at hackathon scale.
+- **Tuple-shaped `Result<S, E>` + `ok` / `err` utilities** and the **hybrid `AppError` taxonomy** (`packages/shared/src/{result,errors}.ts`) — original to this project, per the spec captured in the planning chat.
+- **`useApiQuery` / `useApiMutation` hooks** that throw a marker error inside the TanStack Query `queryFn` to keep retry/cache machinery while exposing a typed `error: AppError | null` (`apps/web/src/lib/api/`) — original to this project.
+- **ABAC permission system** in `packages/shared/src/auth/` (`as const` `ROLES` / `PERMISSIONS` / `ResourceMap`, typed `can(user, action, resource, data?)`) plus the **`scripts/no-role-checks.sh` pre-commit lint** that bans raw `user.roles.includes(...)` outside the auth folder — original to this project.
+
 ## How to use this doc
 
 When you lift a pattern into this project, append a one-liner here:

@@ -1,22 +1,27 @@
+import { AppShell } from '@/components/AppShell/AppShell'
 import { Button } from '@/components/Button/Button'
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: HomeRoute })
 
 function HomeRoute() {
   return (
-    <main className="page">
+    <AppShell>
       <section className="hero">
         <h1>Enterprise AI</h1>
         <p className="lead">
-          TanStack Start, React 19 with the React Compiler, and CSS Modules. No
-          Tailwind, no UI library, no server-state lib &mdash; yet.
+          Convex (reactive reads) + Fastify Bridge (audited writes) + ABAC
+          permissions everywhere. Sign in to drive the demo.
         </p>
         <div className="actions">
-          <Button variant="primary">Get started</Button>
-          <Button variant="ghost">Read the docs</Button>
+          <Link to="/prompts">
+            <Button variant="primary">Open prompts</Button>
+          </Link>
+          <Link to="/admin">
+            <Button variant="ghost">Admin · roles</Button>
+          </Link>
         </div>
       </section>
-    </main>
+    </AppShell>
   )
 }

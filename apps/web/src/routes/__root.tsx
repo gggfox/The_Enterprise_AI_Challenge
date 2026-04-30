@@ -1,11 +1,25 @@
+import { convex } from '@/lib/convex'
+import { getQueryClient } from '@/lib/queryClient'
+import { ClerkProvider, useAuth } from '@clerk/clerk-react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import {
   HeadContent,
   Outlet,
   Scripts,
   createRootRoute,
 } from '@tanstack/react-router'
+import { ConvexProviderWithClerk } from 'convex/react-clerk'
 import type { ReactNode } from 'react'
 import appCss from '../styles/tokens.css?url'
+
+const PUBLISHABLE_KEY =
+  (import.meta.env?.VITE_CLERK_PUBLISHABLE_KEY as string | undefined) ?? ''
+
+if (!PUBLISHABLE_KEY && typeof window !== 'undefined') {
+  console.warn(
+    '[clerk] VITE_CLERK_PUBLISHABLE_KEY is not set -- sign-in will fail to load',
+  )
+}
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,9 +35,16 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
+  const queryClient = getQueryClient()
   return (
     <RootDocument>
-      <Outlet />
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+          <QueryClientProvider client={queryClient}>
+            <Outlet />
+          </QueryClientProvider>
+        </ConvexProviderWithClerk>
+      </ClerkProvider>
     </RootDocument>
   )
 }
