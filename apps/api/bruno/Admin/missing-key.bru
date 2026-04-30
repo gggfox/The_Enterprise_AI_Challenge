@@ -1,0 +1,28 @@
+meta {
+  name: Promote admin (missing key)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/admin/seed/promote-admin
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "email": "you@example.com"
+  }
+}
+
+docs {
+  Same endpoint but no x-api-key. Expect 401 with `{ error: { reason:
+  "unauthenticated" } }`. Demonstrates the convention-by-prefix auth
+  plugin for the /admin scope.
+}

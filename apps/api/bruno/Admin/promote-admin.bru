@@ -1,0 +1,34 @@
+meta {
+  name: Promote admin (bootstrap)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/v1/admin/seed/promote-admin
+  body: json
+  auth: apikey
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{adminApiKey}}
+  placement: header
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "email": "you@example.com"
+  }
+}
+
+docs {
+  Bridge admin endpoint guarded by ADMIN_API_KEY. Convex-side mutation
+  has a zero-admin gate: anyone can be promoted while no admin exists,
+  after which only an existing admin (forwarded JWT) can change roles.
+}

@@ -1,0 +1,32 @@
+meta {
+  name: Update prompt
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/prompts/{{promptId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Updated title from Bruno"
+  }
+}
+
+docs {
+  Updates a prompt. Authors can update their own non-archived prompts;
+  moderators and admins can update any. Run with a non-author bearer to
+  see the 403 forbidden response.
+}

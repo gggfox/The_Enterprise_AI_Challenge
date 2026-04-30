@@ -1,0 +1,33 @@
+meta {
+  name: Create prompt
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/prompts
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Bruno test prompt",
+    "body": "Created from a Bruno request to demonstrate the Bridge -> Convex write path."
+  }
+}
+
+docs {
+  Creates a prompt owned by the calling user. Granted to all roles by
+  default (`prompt.create = true` for admin/user; moderator currently
+  cannot create -- you'll get a 403 with reason: forbidden).
+}

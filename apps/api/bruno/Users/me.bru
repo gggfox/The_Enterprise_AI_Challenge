@@ -1,0 +1,23 @@
+meta {
+  name: Me
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/users/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  Returns the calling user. Requires a Convex Auth JWT.
+}

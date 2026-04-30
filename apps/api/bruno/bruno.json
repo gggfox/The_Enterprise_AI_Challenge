@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "enterprise-ai-api",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

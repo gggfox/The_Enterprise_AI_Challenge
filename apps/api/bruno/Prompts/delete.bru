@@ -1,0 +1,23 @@
+meta {
+  name: Delete prompt
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/v1/prompts/{{promptId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  Deletes a prompt. Authors can delete their own; admins can delete any.
+}

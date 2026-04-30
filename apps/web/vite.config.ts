@@ -5,6 +5,10 @@ import { defineConfig } from 'vite'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  // Load env files from the monorepo root so VITE_* vars in the shared
+  // /.env are picked up by both `vite dev` and the SSR/Nitro build.
+  // The API does the equivalent via `tsx --env-file=../../.env`.
+  envDir: '../../',
   plugins: [
     viteTsConfigPaths({ projects: ['./tsconfig.json'] }),
     tanstackStart({

@@ -1,0 +1,37 @@
+{
+  "name": "@enterprise-ai/convex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./convex/_generated/api": {
+      "types": "./convex/_generated/api.d.ts",
+      "default": "./convex/_generated/api.js"
+    },
+    "./convex/_generated/server": {
+      "types": "./convex/_generated/server.d.ts",
+      "default": "./convex/_generated/server.js"
+    },
+    "./convex/_generated/dataModel": {
+      "types": "./convex/_generated/dataModel.d.ts"
+    },
+    "./convex/schema": "./convex/schema.ts",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "dotenv -e ../../.env -- convex dev --typecheck disable",
+    "dev:codegen": "convex codegen --typecheck disable",
+    "deploy": "convex deploy",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check convex/"
+  },
+  "dependencies": {
+    "@enterprise-ai/shared": "workspace:*",
+    "convex": "^1.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "dotenv-cli": "^11.0.0",
+    "typescript": "^5.7.3"
+  }
+}

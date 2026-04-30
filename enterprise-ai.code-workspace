@@ -1,7 +1,10 @@
 {
   "folders": [
     { "name": "enterprise-ai", "path": "." },
-    { "name": "ref: logisticsPractice", "path": "references/logisticsPractice" },
+    {
+      "name": "ref: logisticsPractice",
+      "path": "references/logisticsPractice"
+    },
     { "name": "ref: Tavli", "path": "references/Tavli" }
   ],
   "settings": {

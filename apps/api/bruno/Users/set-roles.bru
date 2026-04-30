@@ -1,0 +1,33 @@
+meta {
+  name: Set user roles
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/v1/users/roles
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "userId": "{{userId}}",
+    "roles": ["user", "moderator"]
+  }
+}
+
+docs {
+  Assigns roles to a user. Caller must be admin to mutate other users;
+  non-admins can only update themselves (per ABAC predicate
+  `user.user.update`).
+}

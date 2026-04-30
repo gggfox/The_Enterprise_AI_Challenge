@@ -1,0 +1,29 @@
+meta {
+  name: Web vitals
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/v1/telemetry/web-vitals
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "LCP",
+    "value": 1234.5,
+    "id": "demo-beacon-1",
+    "page": "/prompts"
+  }
+}
+
+docs {
+  Beacon endpoint -- intentionally unauthenticated, emitted by the FE to
+  capture Web Vitals into the Bridge wide-event stream.
+}

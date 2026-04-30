@@ -7,7 +7,30 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": [
+        "CONVEX_URL",
+        "CONVEX_DEPLOY_KEY",
+        "CONVEX_DEPLOYMENT",
+        "CLERK_ISSUER_URL",
+        "CLERK_JWKS_URL",
+        "HTTP_PORT",
+        "DASHBOARD_ORIGIN",
+        "BRIDGE_API_KEY",
+        "ADMIN_API_KEY",
+        "OTEL_ENABLED",
+        "OTEL_EXPORTER_OTLP_ENDPOINT",
+        "OTEL_EXPORTER_OTLP_HEADERS",
+        "OTEL_SERVICE_NAME",
+        "SERVICE_VERSION",
+        "SERVICE_NAMESPACE",
+        "DEPLOYMENT_REGION",
+        "WIDE_EVENT_SLOW_MS",
+        "WIDE_EVENT_SUCCESS_SAMPLE_RATE",
+        "VITE_CONVEX_URL",
+        "VITE_API_BASE",
+        "VITE_CLERK_PUBLISHABLE_KEY"
+      ]
     },
     "lint": {
       "dependsOn": ["^build"]

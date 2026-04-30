@@ -41,6 +41,7 @@
       "**/.vite/**",
       "**/coverage/**",
       "**/routeTree.gen.ts",
+      "**/_generated/**",
       "references/**",
       "pnpm-lock.yaml"
     ]

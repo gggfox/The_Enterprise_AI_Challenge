@@ -1,0 +1,19 @@
+meta {
+  name: List prompts
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/prompts
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerJwt}}
+}
+
+headers {
+  Accept: application/json
+}
