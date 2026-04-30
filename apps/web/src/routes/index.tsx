@@ -14,11 +14,8 @@ function HomeRoute() {
           permissions everywhere. Sign in to drive the demo.
         </p>
         <div className="actions">
-          <Link to="/ask">
-            <Button variant="primary">Talk to your data</Button>
-          </Link>
           <Link to="/prompts">
-            <Button variant="ghost">Prompts</Button>
+            <Button variant="primary">Open prompts</Button>
           </Link>
           <Link to="/admin">
             <Button variant="ghost">Admin · roles</Button>

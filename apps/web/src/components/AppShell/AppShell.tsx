@@ -95,7 +95,6 @@ export function AppShell({ children }: { children: ReactNode }) {
           Enterprise AI
         </Link>
         <nav className="nav">
-          <Link to="/ask">Talk to data</Link>
           <Link to="/prompts">Prompts</Link>
           {canViewUsers && <Link to="/admin">Admin</Link>}
         </nav>
