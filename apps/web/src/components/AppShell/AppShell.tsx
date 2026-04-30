@@ -19,10 +19,28 @@ import { useMutation, useQuery } from 'convex/react'
 import { type ReactNode, useEffect, useRef } from 'react'
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { isLoaded, isSignedIn } = useAuth()
+  const { isLoaded, isSignedIn, getToken } = useAuth()
   const me = useQuery(api.users.me)
   const ensureProvisioned = useMutation(api.users.ensureProvisioned)
   const provisionedRef = useRef(false)
+
+  // TEMPORARY diagnostic: prove whether Clerk is minting the "convex"
+  // JWT template. If this logs `null`, the template doesn't exist in
+  // the Clerk dashboard and Convex will receive unauthenticated calls.
+  useEffect(() => {
+    if (!isSignedIn) return
+    void getToken({ template: 'convex' }).then((tok) => {
+      const head = tok ? tok.split('.')[0] : null
+      const payload = tok ? JSON.parse(atob(tok.split('.')[1] ?? '')) : null
+      console.info('[diag:clerk-convex-token]', {
+        hasToken: Boolean(tok),
+        header: head,
+        iss: payload?.iss,
+        aud: payload?.aud,
+        sub: payload?.sub,
+      })
+    })
+  }, [isSignedIn, getToken])
 
   useEffect(() => {
     if (!isSignedIn) {
