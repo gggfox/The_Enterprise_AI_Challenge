@@ -10,7 +10,7 @@ import {
 import { api } from '@enterprise-ai/convex/convex/_generated/api'
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery as useConvexQuery } from 'convex/react'
-import { useMemo } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/ask')({ component: AskPage })
 
@@ -44,29 +44,33 @@ const FUNCTIONS: readonly DeepgramFunctionSchema[] = [
   {
     name: 'query_sales',
     description:
-      'Get daily revenue, transactions, and units sold for a store, region, or the whole chain over the last N days. Anchored to the most recent date in the data.',
+      'Get daily revenue, transactions, and units sold for a store, region, or the whole chain over the last N days. Both args are OPTIONAL: if you omit `scope` or `days`, the previous values from earlier in this conversation are reused. Use this for follow-ups like "and last month?" (omit scope) or "what about MTY?" (omit days).',
     parameters: {
       type: 'object',
       properties: {
         scope: {
           type: 'string',
           description:
-            'Use "all" for chain-wide, "region:<NAME>" for a region (e.g. "region:CDMX"), or "store:<CODE>" for one store (e.g. "store:CDMX-POL"). Bare codes/region names are also accepted.',
+            'Optional. "all" for chain-wide, "region:<NAME>" for a region (e.g. "region:CDMX"), or "store:<CODE>" for one store (e.g. "store:CDMX-POL"). Omit to reuse the previous scope.',
         },
         days: {
           type: 'integer',
           description:
-            'Window length in days, anchored to the latest date in the data. Defaults to 7. Use 7 for a week, 30 for a month, etc.',
+            'Optional. Window length in days, anchored to the latest date in the data. Omit to reuse the previous window. "this week" -> 7, "this month" -> 30, "last quarter" -> 90.',
         },
       },
-      required: ['scope'],
+      required: [],
     },
   },
 ]
 
+type Focus = { scope: string; days: number }
+const DEFAULT_FOCUS: Focus = { scope: 'all', days: 7 }
+
 function buildSystemPrompt(
   stores: readonly Store[],
   regions: readonly string[],
+  focus: Focus,
 ) {
   const storeLines = stores
     .map((s) => `- ${s.code} - ${s.name} (${s.city}, ${s.region})`)
@@ -78,9 +82,16 @@ ${storeLines || '- (still loading store list)'}
 
 Regions: ${regions.join(', ') || '(loading)'}
 
-When the user asks about sales, revenue, traffic, transactions, units, or trends, ALWAYS call the query_sales function. Never invent numbers.
-- scope: "all", "region:<NAME>" (e.g. "region:CDMX"), or "store:<CODE>" (e.g. "store:CDMX-POL").
-- days: integer window. "this week" or "the past week" -> 7, "two weeks" -> 14, "this month" -> 30, "last quarter" -> 90.
+Current focus: scope="${focus.scope}", days=${focus.days}. This is what the user has been talking about. Treat follow-ups as continuations of this focus unless they clearly switch to a different store, region, or window.
+
+When the user asks about sales, revenue, traffic, transactions, units, or trends, call the query_sales function. Never invent numbers.
+- Pass scope ONLY when the user names a different store/region than the current focus. Otherwise omit it and the previous scope is reused.
+- Pass days ONLY when the user names a different window. Otherwise omit it and the previous window is reused.
+- For "what about CDMX?" / "and MTY?" -> pass scope, omit days.
+- For "and last month?" / "the past two weeks?" -> pass days, omit scope.
+- For "how were sales last week in CDMX?" -> pass both.
+- scope formats: "all", "region:<NAME>" (e.g. "region:CDMX"), or "store:<CODE>" (e.g. "store:CDMX-POL").
+- days: integers. "this week" -> 7, "two weeks" -> 14, "this month" -> 30, "last quarter" -> 90.
 
 After the function returns, give a one-sentence insight in plain language and state the headline revenue figure in pesos (MXN). Keep spoken responses under 25 words.
 If the result has ok=false, briefly tell the user the scope wasn't recognized and suggest a known store or region.
@@ -100,9 +111,17 @@ function AskPage() {
     | undefined
 
   const ready = stores !== undefined && regions !== undefined
+
+  // Implicit scope binding. The ref is what the tool handler reads/writes
+  // (always current, no stale-closure problem). The state mirror drives
+  // the prompt + the focus pill in the UI; we only push it on successful
+  // tool calls so that an unrecognized scope doesn't poison the context.
+  const focusRef = useRef<Focus>(DEFAULT_FOCUS)
+  const [focus, setFocus] = useState<Focus>(DEFAULT_FOCUS)
+
   const systemPrompt = useMemo(
-    () => buildSystemPrompt(stores ?? [], regions ?? []),
-    [stores, regions],
+    () => buildSystemPrompt(stores ?? [], regions ?? [], focus),
+    [stores, regions, focus],
   )
 
   const agent = useDeepgramAgent({
@@ -112,10 +131,28 @@ function AskPage() {
     functions: FUNCTIONS,
     onToolCall: async (name, args) => {
       if (name !== 'query_sales') return { error: `unknown_tool:${name}` }
-      const scope = String(args.scope ?? 'all')
-      const days = Number(args.days ?? 7)
+      const prev = focusRef.current
+      const rawScope = args.scope
+      const rawDays = args.days
+      const scope =
+        typeof rawScope === 'string' && rawScope.trim() !== ''
+          ? rawScope
+          : prev.scope
+      const days =
+        typeof rawDays === 'number' && Number.isFinite(rawDays) && rawDays > 0
+          ? Math.floor(rawDays)
+          : prev.days
       try {
-        return await convex.query(api.analytics.querySales, { scope, days })
+        const result = await convex.query(api.analytics.querySales, {
+          scope,
+          days,
+        })
+        if (result.ok) {
+          const next = { scope, days }
+          focusRef.current = next
+          setFocus(next)
+        }
+        return result
       } catch (e) {
         return {
           ok: false,
@@ -163,6 +200,7 @@ function AskPage() {
             </Button>
           )}
           <StatePill state={agent.state} />
+          <FocusPill focus={focus} />
           {agent.error && <span className="error">{agent.error}</span>}
         </div>
 
@@ -235,6 +273,23 @@ function StatePill({ state }: { state: AgentState }) {
       }}
     >
       {STATE_LABELS[state]}
+    </span>
+  )
+}
+
+function FocusPill({ focus }: { focus: Focus }) {
+  return (
+    <span
+      title="What the agent is currently scoped to. Updates as the conversation moves."
+      style={{
+        padding: '2px 10px',
+        border: '1px solid var(--color-border)',
+        borderRadius: 'var(--radius-sm)',
+        fontSize: 'var(--text-sm)',
+        color: 'var(--color-fg-muted)',
+      }}
+    >
+      focus: {focus.scope} · {focus.days}d
     </span>
   )
 }
